@@ -1,0 +1,13 @@
+C:\Users\kuys\Documents\Visual Studio 2015\Projects\mds\mds\bin\Debug\mds.exe.config
+C:\Users\kuys\Documents\Visual Studio 2015\Projects\mds\mds\bin\Debug\mds.exe
+C:\Users\kuys\Documents\Visual Studio 2015\Projects\mds\mds\bin\Debug\mds.pdb
+C:\Users\kuys\Documents\Visual Studio 2015\Projects\mds\mds\obj\Debug\mds.csprojResolveAssemblyReference.cache
+C:\Users\kuys\Documents\Visual Studio 2015\Projects\mds\mds\obj\Debug\mds.Form1.resources
+C:\Users\kuys\Documents\Visual Studio 2015\Projects\mds\mds\obj\Debug\mds.Properties.Resources.resources
+C:\Users\kuys\Documents\Visual Studio 2015\Projects\mds\mds\obj\Debug\mds.csproj.GenerateResource.Cache
+C:\Users\kuys\Documents\Visual Studio 2015\Projects\mds\mds\obj\Debug\mds.exe
+C:\Users\kuys\Documents\Visual Studio 2015\Projects\mds\mds\obj\Debug\mds.pdb
+C:\Users\kuys\Documents\Visual Studio 2015\Projects\mds\mds\bin\Debug\EntityFramework.dll
+C:\Users\kuys\Documents\Visual Studio 2015\Projects\mds\mds\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\kuys\Documents\Visual Studio 2015\Projects\mds\mds\bin\Debug\EntityFramework.xml
+C:\Users\kuys\Documents\Visual Studio 2015\Projects\mds\mds\bin\Debug\EntityFramework.SqlServer.xml

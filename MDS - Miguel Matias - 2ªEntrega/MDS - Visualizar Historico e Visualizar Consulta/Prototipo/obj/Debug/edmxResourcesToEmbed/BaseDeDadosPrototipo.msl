@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BaseDeDadosPrototipoStoreContainer" CdmEntityContainer="BaseDeDadosPrototipoContainer">
+    <EntitySetMapping Name="ConsultasSet">
+      <EntityTypeMapping TypeName="IsTypeOf(BaseDeDadosPrototipo.Consultas)">
+        <MappingFragment StoreEntitySet="ConsultasSet">
+          <ScalarProperty Name="IdConsulta" ColumnName="IdConsulta" />
+          <ScalarProperty Name="DataDeRealizacao" ColumnName="DataDeRealizacao" />
+          <ScalarProperty Name="DoutorResponsavel" ColumnName="DoutorResponsavel" />
+          <ScalarProperty Name="Exames" ColumnName="Exames" />
+          <ScalarProperty Name="PacientesIdPaciente" ColumnName="PacientesIdPaciente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MedicacaoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(BaseDeDadosPrototipo.Medicacao)">
+        <MappingFragment StoreEntitySet="MedicacaoSet">
+          <ScalarProperty Name="IdMedicacao" ColumnName="IdMedicacao" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Quantidade" ColumnName="Quantidade" />
+          <ScalarProperty Name="ConsultasIdConsulta" ColumnName="ConsultasIdConsulta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PacientesSet">
+      <EntityTypeMapping TypeName="IsTypeOf(BaseDeDadosPrototipo.Pacientes)">
+        <MappingFragment StoreEntitySet="PacientesSet">
+          <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="BI_CC" ColumnName="BI_CC" />
+          <ScalarProperty Name="DataNascimento" ColumnName="DataNascimento" />
+          <ScalarProperty Name="NºSNS" ColumnName="NºSNS" />
+          <ScalarProperty Name="Morada" ColumnName="Morada" />
+          <ScalarProperty Name="Contacto" ColumnName="Contacto" />
+          <ScalarProperty Name="NIF" ColumnName="NIF" />
+          <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+          <ScalarProperty Name="EstadoCivil" ColumnName="EstadoCivil" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

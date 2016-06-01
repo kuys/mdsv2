@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BaseDeDadosPrototipo.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="BaseDeDadosPrototipoStoreContainer">
+    <EntitySet Name="ConsultasSet" EntityType="BaseDeDadosPrototipo.Store.ConsultasSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MedicacaoSet" EntityType="BaseDeDadosPrototipo.Store.MedicacaoSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PacientesSet" EntityType="BaseDeDadosPrototipo.Store.PacientesSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="ConsultasMedicacao" Association="BaseDeDadosPrototipo.Store.ConsultasMedicacao">
+      <End Role="Consultas" EntitySet="ConsultasSet" />
+      <End Role="Medicacao" EntitySet="MedicacaoSet" />
+    </AssociationSet>
+    <AssociationSet Name="PacientesConsultas" Association="BaseDeDadosPrototipo.Store.PacientesConsultas">
+      <End Role="Pacientes" EntitySet="PacientesSet" />
+      <End Role="Consultas" EntitySet="ConsultasSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ConsultasSet">
+    <Key>
+      <PropertyRef Name="IdConsulta" />
+    </Key>
+    <Property Name="IdConsulta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DataDeRealizacao" Type="datetime" Nullable="false" />
+    <Property Name="DoutorResponsavel" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Exames" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PacientesIdPaciente" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MedicacaoSet">
+    <Key>
+      <PropertyRef Name="IdMedicacao" />
+    </Key>
+    <Property Name="IdMedicacao" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Quantidade" Type="int" Nullable="false" />
+    <Property Name="ConsultasIdConsulta" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PacientesSet">
+    <Key>
+      <PropertyRef Name="IdPaciente" />
+    </Key>
+    <Property Name="IdPaciente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BI_CC" Type="int" Nullable="false" />
+    <Property Name="DataNascimento" Type="datetime" Nullable="false" />
+    <Property Name="NºSNS" Type="int" Nullable="false" />
+    <Property Name="Morada" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Contacto" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="NIF" Type="int" Nullable="false" />
+    <Property Name="Sexo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="EstadoCivil" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="ConsultasMedicacao">
+    <End Role="Consultas" Type="BaseDeDadosPrototipo.Store.ConsultasSet" Multiplicity="1" />
+    <End Role="Medicacao" Type="BaseDeDadosPrototipo.Store.MedicacaoSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Consultas">
+        <PropertyRef Name="IdConsulta" />
+      </Principal>
+      <Dependent Role="Medicacao">
+        <PropertyRef Name="ConsultasIdConsulta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PacientesConsultas">
+    <End Role="Pacientes" Type="BaseDeDadosPrototipo.Store.PacientesSet" Multiplicity="1" />
+    <End Role="Consultas" Type="BaseDeDadosPrototipo.Store.ConsultasSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pacientes">
+        <PropertyRef Name="IdPaciente" />
+      </Principal>
+      <Dependent Role="Consultas">
+        <PropertyRef Name="PacientesIdPaciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="BaseDeDadosPrototipo" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="BaseDeDadosPrototipoContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ConsultasSet" EntityType="BaseDeDadosPrototipo.Consultas" />
+          <EntitySet Name="MedicacaoSet" EntityType="BaseDeDadosPrototipo.Medicacao" />
+          <EntitySet Name="PacientesSet" EntityType="BaseDeDadosPrototipo.Pacientes" />
+          <AssociationSet Name="ConsultasMedicacao" Association="BaseDeDadosPrototipo.ConsultasMedicacao">
+            <End Role="Consultas" EntitySet="ConsultasSet" />
+            <End Role="Medicacao" EntitySet="MedicacaoSet" />
+          </AssociationSet>
+          <AssociationSet Name="PacientesConsultas" Association="BaseDeDadosPrototipo.PacientesConsultas">
+            <End Role="Pacientes" EntitySet="PacientesSet" />
+            <End Role="Consultas" EntitySet="ConsultasSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Consultas">
+          <Key>
+            <PropertyRef Name="IdConsulta" />
+          </Key>
+          <Property Name="IdConsulta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DataDeRealizacao" Type="DateTime" Nullable="false" />
+          <Property Name="DoutorResponsavel" Type="String" Nullable="false" />
+          <Property Name="Exames" Type="String" Nullable="false" />
+          <Property Name="PacientesIdPaciente" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Medicacao" Relationship="BaseDeDadosPrototipo.ConsultasMedicacao" FromRole="Consultas" ToRole="Medicacao" />
+          <NavigationProperty Name="Pacientes" Relationship="BaseDeDadosPrototipo.PacientesConsultas" FromRole="Consultas" ToRole="Pacientes" />
+        </EntityType>
+        <EntityType Name="Medicacao">
+          <Key>
+            <PropertyRef Name="IdMedicacao" />
+          </Key>
+          <Property Name="IdMedicacao" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" Nullable="false" />
+          <Property Name="Quantidade" Type="Int32" Nullable="false" />
+          <Property Name="ConsultasIdConsulta" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Consultas" Relationship="BaseDeDadosPrototipo.ConsultasMedicacao" FromRole="Medicacao" ToRole="Consultas" />
+        </EntityType>
+        <EntityType Name="Pacientes">
+          <Key>
+            <PropertyRef Name="IdPaciente" />
+          </Key>
+          <Property Name="IdPaciente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" Nullable="false" />
+          <Property Name="BI_CC" Type="Int32" Nullable="false" />
+          <Property Name="DataNascimento" Type="DateTime" Nullable="false" />
+          <Property Name="NºSNS" Type="Int32" Nullable="false" />
+          <Property Name="Morada" Type="String" Nullable="false" />
+          <Property Name="Contacto" Type="String" Nullable="false" />
+          <Property Name="NIF" Type="Int32" Nullable="false" />
+          <Property Name="Sexo" Type="String" Nullable="false" />
+          <Property Name="EstadoCivil" Type="String" Nullable="false" />
+          <NavigationProperty Name="Consultas" Relationship="BaseDeDadosPrototipo.PacientesConsultas" FromRole="Pacientes" ToRole="Consultas" />
+        </EntityType>
+        <Association Name="ConsultasMedicacao">
+          <End Type="BaseDeDadosPrototipo.Consultas" Role="Consultas" Multiplicity="1" />
+          <End Type="BaseDeDadosPrototipo.Medicacao" Role="Medicacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Consultas">
+              <PropertyRef Name="IdConsulta" />
+            </Principal>
+            <Dependent Role="Medicacao">
+              <PropertyRef Name="ConsultasIdConsulta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PacientesConsultas">
+          <End Type="BaseDeDadosPrototipo.Pacientes" Role="Pacientes" Multiplicity="1" />
+          <End Type="BaseDeDadosPrototipo.Consultas" Role="Consultas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pacientes">
+              <PropertyRef Name="IdPaciente" />
+            </Principal>
+            <Dependent Role="Consultas">
+              <PropertyRef Name="PacientesIdPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BaseDeDadosPrototipoStoreContainer" CdmEntityContainer="BaseDeDadosPrototipoContainer">
+    <EntitySetMapping Name="ConsultasSet">
+      <EntityTypeMapping TypeName="IsTypeOf(BaseDeDadosPrototipo.Consultas)">
+        <MappingFragment StoreEntitySet="ConsultasSet">
+          <ScalarProperty Name="IdConsulta" ColumnName="IdConsulta" />
+          <ScalarProperty Name="DataDeRealizacao" ColumnName="DataDeRealizacao" />
+          <ScalarProperty Name="DoutorResponsavel" ColumnName="DoutorResponsavel" />
+          <ScalarProperty Name="Exames" ColumnName="Exames" />
+          <ScalarProperty Name="PacientesIdPaciente" ColumnName="PacientesIdPaciente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MedicacaoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(BaseDeDadosPrototipo.Medicacao)">
+        <MappingFragment StoreEntitySet="MedicacaoSet">
+          <ScalarProperty Name="IdMedicacao" ColumnName="IdMedicacao" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Quantidade" ColumnName="Quantidade" />
+          <ScalarProperty Name="ConsultasIdConsulta" ColumnName="ConsultasIdConsulta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PacientesSet">
+      <EntityTypeMapping TypeName="IsTypeOf(BaseDeDadosPrototipo.Pacientes)">
+        <MappingFragment StoreEntitySet="PacientesSet">
+          <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="BI_CC" ColumnName="BI_CC" />
+          <ScalarProperty Name="DataNascimento" ColumnName="DataNascimento" />
+          <ScalarProperty Name="NºSNS" ColumnName="NºSNS" />
+          <ScalarProperty Name="Morada" ColumnName="Morada" />
+          <ScalarProperty Name="Contacto" ColumnName="Contacto" />
+          <ScalarProperty Name="NIF" ColumnName="NIF" />
+          <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+          <ScalarProperty Name="EstadoCivil" ColumnName="EstadoCivil" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

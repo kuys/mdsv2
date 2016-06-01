@@ -1,0 +1,18 @@
+c:\users\miguel\documents\visual studio 2013\Projects\Prototipo\Prototipo\bin\Debug\Prototipo.exe.config
+c:\users\miguel\documents\visual studio 2013\Projects\Prototipo\Prototipo\bin\Debug\Prototipo.exe
+c:\users\miguel\documents\visual studio 2013\Projects\Prototipo\Prototipo\bin\Debug\Prototipo.pdb
+c:\users\miguel\documents\visual studio 2013\Projects\Prototipo\Prototipo\bin\Debug\EntityFramework.dll
+c:\users\miguel\documents\visual studio 2013\Projects\Prototipo\Prototipo\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\miguel\documents\visual studio 2013\Projects\Prototipo\Prototipo\bin\Debug\EntityFramework.xml
+c:\users\miguel\documents\visual studio 2013\Projects\Prototipo\Prototipo\bin\Debug\EntityFramework.SqlServer.xml
+c:\users\miguel\documents\visual studio 2013\Projects\Prototipo\Prototipo\obj\Debug\Prototipo.csprojResolveAssemblyReference.cache
+c:\users\miguel\documents\visual studio 2013\Projects\Prototipo\Prototipo\obj\Debug\Prototipo.VisualizarPacientes.resources
+c:\users\miguel\documents\visual studio 2013\Projects\Prototipo\Prototipo\obj\Debug\Prototipo.VisualizarConsulta.resources
+c:\users\miguel\documents\visual studio 2013\Projects\Prototipo\Prototipo\obj\Debug\Prototipo.HistoricoConsultas.resources
+c:\users\miguel\documents\visual studio 2013\Projects\Prototipo\Prototipo\obj\Debug\Prototipo.Properties.Resources.resources
+c:\users\miguel\documents\visual studio 2013\Projects\Prototipo\Prototipo\obj\Debug\Prototipo.csproj.GenerateResource.Cache
+c:\users\miguel\documents\visual studio 2013\Projects\Prototipo\Prototipo\obj\Debug\Prototipo.exe
+c:\users\miguel\documents\visual studio 2013\Projects\Prototipo\Prototipo\obj\Debug\Prototipo.pdb
+C:\Users\Miguel\Desktop\Projetos Escola\Metodologias\MDS - Miguel Matias - 2ªEntrega\Prototipo\Prototipo\bin\Debug\Prototipo.exe.config
+C:\Users\Miguel\Desktop\Projetos Escola\Metodologias\MDS - Miguel Matias - 2ªEntrega\Prototipo\Prototipo\obj\Debug\Prototipo.exe
+C:\Users\Miguel\Desktop\Projetos Escola\Metodologias\MDS - Miguel Matias - 2ªEntrega\Prototipo\Prototipo\obj\Debug\Prototipo.pdb

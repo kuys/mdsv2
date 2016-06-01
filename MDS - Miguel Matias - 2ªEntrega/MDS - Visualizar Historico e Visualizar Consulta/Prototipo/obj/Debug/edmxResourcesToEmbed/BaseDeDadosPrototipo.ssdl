@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BaseDeDadosPrototipo.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="BaseDeDadosPrototipoStoreContainer">
+    <EntitySet Name="ConsultasSet" EntityType="BaseDeDadosPrototipo.Store.ConsultasSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MedicacaoSet" EntityType="BaseDeDadosPrototipo.Store.MedicacaoSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PacientesSet" EntityType="BaseDeDadosPrototipo.Store.PacientesSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="ConsultasMedicacao" Association="BaseDeDadosPrototipo.Store.ConsultasMedicacao">
+      <End Role="Consultas" EntitySet="ConsultasSet" />
+      <End Role="Medicacao" EntitySet="MedicacaoSet" />
+    </AssociationSet>
+    <AssociationSet Name="PacientesConsultas" Association="BaseDeDadosPrototipo.Store.PacientesConsultas">
+      <End Role="Pacientes" EntitySet="PacientesSet" />
+      <End Role="Consultas" EntitySet="ConsultasSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ConsultasSet">
+    <Key>
+      <PropertyRef Name="IdConsulta" />
+    </Key>
+    <Property Name="IdConsulta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DataDeRealizacao" Type="datetime" Nullable="false" />
+    <Property Name="DoutorResponsavel" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Exames" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PacientesIdPaciente" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MedicacaoSet">
+    <Key>
+      <PropertyRef Name="IdMedicacao" />
+    </Key>
+    <Property Name="IdMedicacao" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Quantidade" Type="int" Nullable="false" />
+    <Property Name="ConsultasIdConsulta" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PacientesSet">
+    <Key>
+      <PropertyRef Name="IdPaciente" />
+    </Key>
+    <Property Name="IdPaciente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BI_CC" Type="int" Nullable="false" />
+    <Property Name="DataNascimento" Type="datetime" Nullable="false" />
+    <Property Name="NºSNS" Type="int" Nullable="false" />
+    <Property Name="Morada" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Contacto" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="NIF" Type="int" Nullable="false" />
+    <Property Name="Sexo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="EstadoCivil" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="ConsultasMedicacao">
+    <End Role="Consultas" Type="BaseDeDadosPrototipo.Store.ConsultasSet" Multiplicity="1" />
+    <End Role="Medicacao" Type="BaseDeDadosPrototipo.Store.MedicacaoSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Consultas">
+        <PropertyRef Name="IdConsulta" />
+      </Principal>
+      <Dependent Role="Medicacao">
+        <PropertyRef Name="ConsultasIdConsulta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PacientesConsultas">
+    <End Role="Pacientes" Type="BaseDeDadosPrototipo.Store.PacientesSet" Multiplicity="1" />
+    <End Role="Consultas" Type="BaseDeDadosPrototipo.Store.ConsultasSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pacientes">
+        <PropertyRef Name="IdPaciente" />
+      </Principal>
+      <Dependent Role="Consultas">
+        <PropertyRef Name="PacientesIdPaciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

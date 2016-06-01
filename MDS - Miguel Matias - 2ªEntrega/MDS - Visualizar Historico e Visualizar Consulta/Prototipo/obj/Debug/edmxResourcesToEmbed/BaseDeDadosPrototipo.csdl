@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="BaseDeDadosPrototipo" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="BaseDeDadosPrototipoContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ConsultasSet" EntityType="BaseDeDadosPrototipo.Consultas" />
+    <EntitySet Name="MedicacaoSet" EntityType="BaseDeDadosPrototipo.Medicacao" />
+    <EntitySet Name="PacientesSet" EntityType="BaseDeDadosPrototipo.Pacientes" />
+    <AssociationSet Name="ConsultasMedicacao" Association="BaseDeDadosPrototipo.ConsultasMedicacao">
+      <End Role="Consultas" EntitySet="ConsultasSet" />
+      <End Role="Medicacao" EntitySet="MedicacaoSet" />
+    </AssociationSet>
+    <AssociationSet Name="PacientesConsultas" Association="BaseDeDadosPrototipo.PacientesConsultas">
+      <End Role="Pacientes" EntitySet="PacientesSet" />
+      <End Role="Consultas" EntitySet="ConsultasSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Consultas">
+    <Key>
+      <PropertyRef Name="IdConsulta" />
+    </Key>
+    <Property Name="IdConsulta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DataDeRealizacao" Type="DateTime" Nullable="false" />
+    <Property Name="DoutorResponsavel" Type="String" Nullable="false" />
+    <Property Name="Exames" Type="String" Nullable="false" />
+    <Property Name="PacientesIdPaciente" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Medicacao" Relationship="BaseDeDadosPrototipo.ConsultasMedicacao" FromRole="Consultas" ToRole="Medicacao" />
+    <NavigationProperty Name="Pacientes" Relationship="BaseDeDadosPrototipo.PacientesConsultas" FromRole="Consultas" ToRole="Pacientes" />
+  </EntityType>
+  <EntityType Name="Medicacao">
+    <Key>
+      <PropertyRef Name="IdMedicacao" />
+    </Key>
+    <Property Name="IdMedicacao" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" Nullable="false" />
+    <Property Name="Quantidade" Type="Int32" Nullable="false" />
+    <Property Name="ConsultasIdConsulta" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Consultas" Relationship="BaseDeDadosPrototipo.ConsultasMedicacao" FromRole="Medicacao" ToRole="Consultas" />
+  </EntityType>
+  <EntityType Name="Pacientes">
+    <Key>
+      <PropertyRef Name="IdPaciente" />
+    </Key>
+    <Property Name="IdPaciente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" Nullable="false" />
+    <Property Name="BI_CC" Type="Int32" Nullable="false" />
+    <Property Name="DataNascimento" Type="DateTime" Nullable="false" />
+    <Property Name="NºSNS" Type="Int32" Nullable="false" />
+    <Property Name="Morada" Type="String" Nullable="false" />
+    <Property Name="Contacto" Type="String" Nullable="false" />
+    <Property Name="NIF" Type="Int32" Nullable="false" />
+    <Property Name="Sexo" Type="String" Nullable="false" />
+    <Property Name="EstadoCivil" Type="String" Nullable="false" />
+    <NavigationProperty Name="Consultas" Relationship="BaseDeDadosPrototipo.PacientesConsultas" FromRole="Pacientes" ToRole="Consultas" />
+  </EntityType>
+  <Association Name="ConsultasMedicacao">
+    <End Type="BaseDeDadosPrototipo.Consultas" Role="Consultas" Multiplicity="1" />
+    <End Type="BaseDeDadosPrototipo.Medicacao" Role="Medicacao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Consultas">
+        <PropertyRef Name="IdConsulta" />
+      </Principal>
+      <Dependent Role="Medicacao">
+        <PropertyRef Name="ConsultasIdConsulta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PacientesConsultas">
+    <End Type="BaseDeDadosPrototipo.Pacientes" Role="Pacientes" Multiplicity="1" />
+    <End Type="BaseDeDadosPrototipo.Consultas" Role="Consultas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pacientes">
+        <PropertyRef Name="IdPaciente" />
+      </Principal>
+      <Dependent Role="Consultas">
+        <PropertyRef Name="PacientesIdPaciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
